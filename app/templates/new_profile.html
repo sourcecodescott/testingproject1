@@ -1,0 +1,89 @@
+
+
+
+{% extends "base.html" %} 
+
+{% block main %}
+
+<form method="POST" action="{{ url_for('new_profile') }}" enctype="multipart/form-data">
+ {{ form.csrf_token }}
+ 
+ 
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="http://orig13.deviantart.net/dc23/f/2011/362/5/c/trollface_facebook_avatar_by_mahirh-d4kgpv9.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload your photo...</h6>
+       <div class="form-group">
+        <label for="Profile Picture">{{ form.image.label }}</label>
+        {{ form.image}}
+    </div>
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a> 
+        <i class="fa fa-coffee"></i>
+        
+        {% include 'flash_messages.html' %}
+        
+    
+        
+        
+      </div>
+      <h3>Personal info</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label  for="Firstname" class="col-lg-3 control-label">{{ form.firstname.label }}</label>
+          {{ form.firstname(size=35, placeholder="Enter your First Name") }}
+        </div>
+        
+        <div class="form-group">
+          <label  for="Lastname" class="col-lg-3 control-label">{{ form.lastname.label }}</label>
+           {{ form.lastname(size=35, placeholder="Enter your Lat Name") }}
+        </div>
+      
+       
+       
+        <div class="form-group">
+          <label for="Username" class="col-md-3 control-label">{{ form.username.label }}</label>
+          {{ form.username(size=35, placeholder="Enter your Username") }}
+        </div>
+          
+           <div class="form-group">
+        <label for="Age" class="col-md-3 control-label">{{ form.age.label }}</label>
+        {{ form.age  (size=35, placeholder="Enter your Age") }}
+        </div>
+        
+        <div class="form-group">
+            <label for="Gender" class="col-md-3 control-label">{{ form.gender.label }}</label>
+            {{ form.gender }}
+        </div>
+        
+        <div class="form-group">
+            <label for="Biography" class="col-md-3 control-label">{{ form.biography.label }}</label>
+            {{ form.biography(cols="50", rows="5") }}
+        </div>
+          
+   
+        
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary " type="submit"></button>
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block css %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/listprofile.css') }}">
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/listprofile.js') }}"> </script>
+{% endblock %}
+
+{% block main %}
+<h1 class="page-header">Users</h1>
+
+{% include 'flash_messages.html' %}
+
+
+
+{% for profile in profiles %}
+<div class="container">
+	<div class="row">
+		<h1>
+        {{ profile.username }}
+        </h1>
+	</div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                <div class="avatar">
+                     <img src={{ url_for('static',filename="uploads/"+ profile.image) }} alt={{ profile.image }} />
+                </div>
+                <div class="content">
+                      <b>Date Joined:</b>{{ profile.created_on }}
+                    <p><button type="button" class="btn btn-default"> <span class="post-title"><b> <a href="/profile/{{ profile.userid }}"> View </a></button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+
+
+
+
+{% endblock %} 
